@@ -28,3 +28,13 @@
         <input class="mt-2 w-full rounded-2xl border border-[#eadfd1] px-4 py-3 text-sm" id="notes" name="notes" type="text" value="{{ old('notes', $team?->notes) }}">
     </div>
 </div>
+<div>
+    <label class="text-xs font-semibold text-[#6b7280]" for="photo">Foto tim SPPG</label>
+    <input class="mt-2 w-full rounded-2xl border border-[#eadfd1] bg-white px-4 py-3 text-sm" id="photo" name="photo" type="file" accept="image/*">
+    @if ($team?->photo_path)
+        <div class="mt-4">
+            <p class="mb-2 text-xs font-semibold text-[#6b7280]">Preview Foto Saat Ini:</p>
+            <img class="h-40 w-40 rounded-lg object-cover" src="{{ asset('storage/' . $team->photo_path) }}" alt="{{ $team->name }}">
+        </div>
+    @endif
+</div>

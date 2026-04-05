@@ -24,4 +24,6 @@
         <p class="font-display text-xl">Ringkasan cepat</p>
         <p class="mt-3 text-sm text-[#6b7280]">Gunakan menu di kiri untuk mengelola data sekolah, tim SPPG, menu harian, dan status aduan masyarakat.</p>
     </div>
+
+    @include('admin.partials.admin-sppg-card', ['sppgTeams' => $sppgTeams])
 @endsection

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('coverage_area');
             $table->unsignedInteger('members_count')->default(0);
             $table->text('notes')->nullable();
+            $table->string('photo_path')->nullable();
             $table->timestamps();
         });
     }

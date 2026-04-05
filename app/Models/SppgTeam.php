@@ -17,5 +17,6 @@ class SppgTeam extends Model
         'coverage_area',
         'members_count',
         'notes',
+        'photo_path',
     ];
 }

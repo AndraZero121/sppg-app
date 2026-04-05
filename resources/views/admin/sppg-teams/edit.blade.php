@@ -1,7 +1,7 @@
 @extends('layouts.admin', ['heading' => 'Edit Tim SPPG'])
 
 @section('content')
-    <form class="max-w-3xl space-y-4" method="POST" action="{{ route('admin.sppg-teams.update', $team) }}">
+    <form class="max-w-3xl space-y-4" method="POST" action="{{ route('admin.sppg-teams.update', $team) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         @include('admin.sppg-teams.form', ['team' => $team])
