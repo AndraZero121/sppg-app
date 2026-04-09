@@ -65,6 +65,13 @@ class PublicController extends Controller
         ]);
     }
 
+    public function teamShow(SppgTeam $sppgTeam): View
+    {
+        return view('teams.show', [
+            'team' => $sppgTeam,
+        ]);
+    }
+
     public function complaintForm(): View
     {
         return view('complaints.create');

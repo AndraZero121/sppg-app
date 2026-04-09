@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ComplaintController as AdminComplaintController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\SchoolController;
 use App\Http\Controllers\Admin\SppgTeamController;
@@ -12,6 +13,7 @@ Route::get('/', [PublicController::class, 'home'])->name('home');
 Route::get('/menu', [PublicController::class, 'menuHistory'])->name('menus.history');
 Route::get('/menu/{menu}', [PublicController::class, 'menuShow'])->name('menus.show');
 Route::get('/tim-sppg', [PublicController::class, 'teams'])->name('teams.index');
+Route::get('/tim-sppg/{sppgTeam}', [PublicController::class, 'teamShow'])->name('teams.show');
 Route::get('/pengaduan', [PublicController::class, 'complaintForm'])->name('complaints.create');
 Route::post('/pengaduan', [PublicController::class, 'complaintStore'])->name('complaints.store');
 Route::get('/aduan', [PublicController::class, 'complaintsIndex'])->name('complaints.index');
@@ -32,7 +34,7 @@ Route::middleware(['auth', 'admin'])
     ->prefix('admin')
     ->name('admin.')
     ->group(function () {
-        Route::view('/', 'admin.dashboard')->name('dashboard');
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('schools', SchoolController::class)->except(['show']);
         Route::resource('sppg-teams', SppgTeamController::class)->except(['show']);
         Route::resource('menus', MenuController::class)->except(['show']);

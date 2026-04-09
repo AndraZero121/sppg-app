@@ -38,7 +38,13 @@ class SppgTeamController extends Controller
      */
     public function store(StoreSppgTeamRequest $request): RedirectResponse
     {
-        SppgTeam::create($request->validated());
+        $data = $request->validated();
+
+        if ($request->hasFile('photo')) {
+            $data['photo_path'] = $request->file('photo')->store('sppg-teams', 'public');
+        }
+
+        SppgTeam::create($data);
 
         return redirect()
             ->route('admin.sppg-teams.index')
@@ -60,7 +66,13 @@ class SppgTeamController extends Controller
      */
     public function update(UpdateSppgTeamRequest $request, SppgTeam $sppgTeam): RedirectResponse
     {
-        $sppgTeam->update($request->validated());
+        $data = $request->validated();
+
+        if ($request->hasFile('photo')) {
+            $data['photo_path'] = $request->file('photo')->store('sppg-teams', 'public');
+        }
+
+        $sppgTeam->update($data);
 
         return redirect()
             ->route('admin.sppg-teams.index')
